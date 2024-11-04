@@ -25,31 +25,31 @@
         </div>
 
         <!-- Parte derecha del formulario donde se ingresa la información de registro -->
+        
         <div class="form-information">
             <div class="form-information-childs">
                 <h2>Crear una Cuenta</h2>
-                <p>Usa tu email para registrarte</p>
                 <!-- Formulario de registro -->
-                <form class="form form-register" method="POST" action="sesioncontrol">
+                <form action="../controlador/registroC.php" class="form form-register" method="POST" enctype="multipart/form-data">
                     <!-- Campo para el nombre completo -->
                     <div>
                         <label>
                             <i class='bx bx-user' ></i>
-                            <input type="text" placeholder="Nombre Completo" name="userName" minlength="3" class="input-field form-control" required>
+                            <input id="nombreCompleto" type="text" placeholder="Nombre Completo" name="userName" minlength="3" class="input-field form-control" required>
                         </label>
                     </div>
                     <!-- Campo para el correo electrónico -->
                     <div>
                         <label>
                             <i class='bx bx-envelope' ></i>
-                            <input type="email" placeholder="Correo Electronico" name="userEmail" class="input-field form-control" required>
+                            <input id="correo" type="email" placeholder="Correo Electronico" name="userEmail" class="input-field form-control" required>
                         </label>
                     </div>
                     <!-- Campo para la contraseña -->
                     <div>
                         <label>
                             <i class='bx bx-lock-alt' ></i>
-                            <input type="password" placeholder="Contraseña" name="userPassword" minlength="6" required>
+                            <input id="contrasena" type="password" placeholder="Contraseña" name="userPassword" minlength="6" required>
                         </label>
                     </div>
                     <!-- Botón para enviar el formulario de registro -->
@@ -58,6 +58,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Contenedor para el formulario de inicio de sesión (inicialmente oculto) -->
     <div class="container-form login hide">
