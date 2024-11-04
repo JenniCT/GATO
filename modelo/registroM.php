@@ -6,10 +6,13 @@ class Registro {
         $this->conexion = $conexion;
     }
 
-    public function registrarUsuario($nombre, $aPaterno, $aMaterno, $correo, $contrasena) {
-        // Verificamos si ya existe un usuario con el correo proporcionado
-        $consulta = "SELECT Correo FROM usuarios WHERE correo = '$correo'";
-        $resultado = $this->conexion->query($consulta);
+    public function registrarUsuario($nombre, $apPaterno, $apMaterno, $correo, $contrasena) {
+        // Usamos sentencias preparadas para evitar inyecciones SQL
+        $consulta = "SELECT Correo FROM usuarios WHERE correo = ?";
+        $stmt = $this->conexion->prepare($consulta);
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
 
         if ($resultado->num_rows > 0) {
             return "Ya existe un usuario con ese correo";
@@ -19,12 +22,15 @@ class Registro {
 
             // Insertamos los datos del usuario, incluyendo la fecha de registro
             $consulta = "INSERT INTO usuarios (Nombre, apPaterno, apMaterno, correo, contrasena, fchRegistro) 
-                VALUES ('$nombre', '$aPaterno', '$aMaterno', '$correo', '$contrasenaEncriptada', NOW())";
+                VALUES (?, ?, ?, ?, ?, NOW())";
 
-            if ($this->conexion->query($consulta) === TRUE) {
+            $stmt = $this->conexion->prepare($consulta);
+            $stmt->bind_param("sssss", $nombre, $apPaterno, $apMaterno, $correo, $contrasenaEncriptada);
+
+            if ($stmt->execute()) {
                 return "Usuario agregado correctamente.";
             } else {
-                return "Error al agregar usuario: " . $this->conexion->error;
+                return "Error al agregar usuario: " . $stmt->error;
             }
         }
     }

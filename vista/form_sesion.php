@@ -31,30 +31,45 @@
                 <h2>Crear una Cuenta</h2>
                 <!-- Formulario de registro -->
                 <form action="../controlador/registroC.php" class="form form-register" method="POST" enctype="multipart/form-data">
-                    <!-- Campo para el nombre completo -->
+                    <!-- Campo para el nombre -->
                     <div>
                         <label>
-                            <i class='bx bx-user' ></i>
-                            <input id="nombreCompleto" type="text" placeholder="Nombre Completo" name="userName" minlength="3" class="input-field form-control" required>
+                            <i class='bx bx-user'></i>
+                            <input id="nombre" type="text" placeholder="Nombre" name="nombre" minlength="1" class="input-field form-control" required>
+                        </label>
+                    </div>
+                    <!-- Campo para el apellido paterno -->
+                    <div>
+                        <label>
+                            <i class='bx bx-user'></i>
+                            <input id="apPaterno" type="text" placeholder="Apellido Paterno" name="apPaterno" minlength="1" class="input-field form-control" required>
+                        </label>
+                    </div>
+                    <!-- Campo para el apellido materno -->
+                    <div>
+                        <label>
+                            <i class='bx bx-user'></i>
+                            <input id="apMaterno" type="text" placeholder="Apellido Materno" name="apMaterno" minlength="1" class="input-field form-control">
                         </label>
                     </div>
                     <!-- Campo para el correo electrónico -->
                     <div>
                         <label>
-                            <i class='bx bx-envelope' ></i>
-                            <input id="correo" type="email" placeholder="Correo Electronico" name="userEmail" class="input-field form-control" required>
+                            <i class='bx bx-envelope'></i>
+                            <input id="correo" type="email" placeholder="Correo Electrónico" name="correo" class="input-field form-control" required>
                         </label>
                     </div>
                     <!-- Campo para la contraseña -->
                     <div>
                         <label>
-                            <i class='bx bx-lock-alt' ></i>
-                            <input id="contrasena" type="password" placeholder="Contraseña" name="userPassword" minlength="6" required>
+                            <i class='bx bx-lock-alt'></i>
+                            <input id="contrasena" type="password" placeholder="Contraseña" name="contrasena" minlength="6" required>
                         </label>
                     </div>
                     <!-- Botón para enviar el formulario de registro -->
                     <input type="submit" value="Registrarse">
                 </form>
+
             </div>
         </div>
     </div>

@@ -15,32 +15,25 @@ class RegistroController {
             }
 
             // Extraemos y procesamos los datos del formulario
-            $nombreCompleto = isset($_POST['nombreCompleto']) ? trim($_POST['nombreCompleto']) : '';
+            $nombre = isset($_POST['nombre']) ? trim($_POST['nombre']) : '';
+            $aPaterno = isset($_POST['apPaterno']) ? trim($_POST['apPaterno']) : '';
+            $aMaterno = isset($_POST['apMaterno']) ? trim($_POST['apMaterno']) : '';
             $correo = isset($_POST['correo']) ? trim($_POST['correo']) : '';
             $contrasena = isset($_POST['contrasena']) ? trim($_POST['contrasena']) : '';
 
-            // Dividimos el nombre completo
-            $nombreParts = explode(" ", $nombreCompleto);
-            $nombre = $nombreParts[0]; // Primer nombre
-            $aPaterno = isset($nombreParts[1]) ? $nombreParts[1] : ''; // Segundo nombre (apellido)
-            $aMaterno = isset($nombreParts[2]) ? $nombreParts[2] : ''; // Tercer nombre (apellido)
-
-            $sesion = new Sesion($conexion); // Instancia un objeto de la clase Sesion
-            $existeCorreo = $sesion->existeCorreo($correo); // Llama al método existeCorreo()
+            $sesion = new Sesion($conexion);
+            $existeCorreo = $sesion->existeCorreo($correo);
 
             if ($existeCorreo) {
-                // Si el correo ya existe, redireccionar a la página de inicio de sesión
                 echo "<script>alert('Ya existe un usuario con ese correo');</script>";
                 header("Location: ../vista/form_sesion.php");
                 exit();
             } else {
                 // Si el correo no existe, continuar con el registro
-                $registro = new Registro($conexion); // Instancia un objeto de la clase Registro
+                $registro = new Registro($conexion);
                 $mensaje = $registro->registrarUsuario($nombre, $aPaterno, $aMaterno, $correo, $contrasena);
-                
-                // Redireccionar según el mensaje del registro
+
                 if ($mensaje === "Usuario agregado correctamente.") {
-                    // Guardamos el correo del usuario en la sesión
                     $_SESSION['correo'] = $correo;
                     header("Location: ../vista/TipoUsuario.php");
                     exit();
