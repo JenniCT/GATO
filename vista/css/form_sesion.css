@@ -1,0 +1,245 @@
+/* Reset de padding y margen para todos los elementos */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Configuración general del cuerpo de la página: centrado y fondo */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(img/2.jpg); /* Imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+}
+
+/* Contenedor del formulario (ambos formularios, registro e inicio de sesión) */
+.container-form {
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, .1); /* Sombra suave */
+    height: 500px;
+    max-width: 900px;
+    transition: all 1s ease; /* Animación en transiciones */
+    margin: 10px;
+}
+
+/* Sección izquierda del formulario con información */
+.information {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative; /* Permite agregar el pseudo-elemento para el fondo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: white; /* Texto en blanco */
+    overflow: hidden; /* Evita que elementos se salgan del contenedor */
+}
+
+/* Imagen de fondo difuminada detrás del contenido de la sección izquierda */
+.information::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../img/login.jpg'); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(2px); /* Difumina la imagen */
+    z-index: -1; /* Coloca la imagen detrás del contenido */
+    opacity: 0.8; /* Ajusta la transparencia de la imagen */
+}
+
+/* Estilo de los elementos hijos dentro de la sección de información */
+.info-childs {
+    width: 100%;
+    padding: 0 30px;
+}
+
+/* Título dentro de la sección de información */
+.info-childs h2 {
+    font-size: 2.5rem;
+    color: white; /* Texto en blanco */
+}
+
+/* Texto dentro de la sección de información */
+.info-childs p {
+    margin: 15px 0;
+    color: white;
+}
+
+/* Botones dentro de la sección de información */
+.info-childs input {
+    background-color: transparent;
+    outline: none;
+    border: solid 2px white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    transition: background-color .3s ease; /* Efecto al pasar el ratón */
+}
+
+/* Efecto hover en el botón */
+.info-childs input:hover {
+    background-color: black; /* Cambia el fondo a negro */
+    border: none;
+    color: #fff; /* Texto en blanco */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1); /* Sombra suave */
+}
+
+/* Sección derecha del formulario donde el usuario ingresa los datos */
+.form-information {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    text-align: center;
+    background-color: #f8f8f8; /* Fondo gris claro */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* Elementos dentro de la sección de ingreso de datos */
+.form-information-childs {
+    padding: 0 30px;
+}
+
+/* Título dentro de la sección de ingreso de datos */
+.form-information-childs h2 {
+    color: #333; /* Color gris oscuro */
+    font-size: 2rem;
+}
+
+/* Texto dentro de la sección de ingreso de datos */
+.form-information-childs p {
+    color: #555; /* Color gris medio */
+}
+
+/* Contenedor de los iconos sociales */
+.icons {
+    margin: 15px 0;
+}
+
+/* Estilo de los iconos sociales */
+.icons i {
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #9191bd;
+    border: solid thin #9191bd;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+}
+
+/* Efecto hover en los iconos sociales */
+.icons i:hover {
+    background-color: #c7c7f3; /* Color de fondo al pasar el ratón */
+    color: #fff; /* Cambia el color del icono a blanco */
+}
+
+/* Estilo general del formulario */
+.form {
+    margin: 30px 0 0 0;
+}
+
+/* Estilo de las etiquetas y campos de entrada dentro del formulario */
+.form label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    padding: 0 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+}
+
+/* Estilo de los campos de entrada de texto */
+.form label input {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #333;
+}
+
+/* Estilo de los iconos dentro de los campos de entrada */
+.form label i {
+    color: #a7a7a7; /* Color gris claro */
+}
+
+/* Estilo del botón de envío */
+.form input[type="submit"] {
+    background-color: transparent;
+    color: black;
+    border: solid 2px white;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+}
+
+/* Efecto hover en el botón de envío */
+.form input[type="submit"]:hover {
+    background-color: black; /* Cambia el fondo a negro */
+    color: white; /* Texto en blanco */
+}
+
+/* Ocultar un formulario (cuando se cambia entre formularios) */
+.hide {
+    position: absolute;
+    transform: translateY(-300%);
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media screen and (max-width:750px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+/* Ajustes para pantallas aún más pequeñas */
+@media screen and (max-width:580px) {
+    html {
+        font-size: 15px;
+    }
+
+    /* Cambia la dirección de los formularios a vertical en pantallas pequeñas */
+    .container-form {
+        height: auto;
+        flex-direction: column;
+    }
+
+    /* Ajustes para la sección de información en pantallas pequeñas */
+    .information {
+        width: 100%;
+        padding: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0;
+    }
+
+    /* Ajustes para la sección de ingreso de datos en pantallas pequeñas */
+    .form-information {
+        width: 100%;
+        padding: 20px;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 0;
+    }
+}
