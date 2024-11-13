@@ -93,26 +93,28 @@
                 <h2>Iniciar Sesión</h2>
                 <p>Inicia Sesión con tu cuenta</p>
                 <!-- Formulario de inicio de sesión -->
-                <form class="form form-login" method="POST" action="sesioncontrol">
+                <form action="../controlador/sesionC.php" class="form form-login" method="POST" action="sesioncontrol">
                     <!-- Campo para el correo electrónico -->
                     <div>
                         <label>
                             <i class='bx bx-envelope' ></i>
-                            <input type="email" placeholder="Correo Electronico" name="userEmail" required>
+                            <input id="correo" type="email" placeholder="Correo Electronico" name="userEmail" required>
                         </label>
                     </div>
                     <!-- Campo para la contraseña -->
                     <div>
                         <label>
                             <i class='bx bx-lock-alt' ></i>
-                            <input type="password" placeholder="Contraseña" name="userPassword" minlength="6" required>
+                            <input id="contrasena" type="password" placeholder="Contraseña" name="userPassword" minlength="6" required>
                         </label>
                     </div>
                     <!-- Botón para enviar el formulario de inicio de sesión -->
                     <input type="submit" value="Iniciar Sesión"> 
+                </form>
             </div>
         </div>
     </div>
+    
 
     <!-- Enlace al archivo de JavaScript para la interacción de los formularios -->
     <script src="js/script.js"></script>

@@ -40,3 +40,20 @@ cloud.addEventListener("click",()=>{
         span.classList.toggle("oculto");
     });
 });
+
+  // Agregado de clientes
+
+document.getElementById('agregarClienteBtn').addEventListener('click', function() {
+    document.getElementById('formularioFlotante').style.display = 'flex';
+});
+
+document.getElementById('cancelarBtn').addEventListener('click', function() {
+    document.getElementById('formularioFlotante').style.display = 'none';
+});
+
+document.getElementById('formNuevoCliente').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Aquí puedes agregar el código para enviar los datos o almacenarlos
+    alert('Cliente agregado');
+    document.getElementById('formularioFlotante').style.display = 'none';
+});

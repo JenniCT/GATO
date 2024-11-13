@@ -1,0 +1,774 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+:root{
+    --color-barra-lateral:rgb(255,255,255);
+
+    --color-texto:rgb(0,0,0);
+    --color-texto-menu:rgb(134,136,144);
+
+    --color-menu-hover:rgb(238,238,238);
+    --color-menu-hover-texto:rgb(0,0,0);
+
+    --color-boton:rgb(0,0,0);
+    --color-boton-texto:rgb(255,255,255);
+
+    --color-linea:rgb(180,180,180);
+
+    --color-switch-base :rgb(201,202,206);
+    --color-switch-circulo:rgb(241,241,241);
+
+    --color-scroll:rgb(192,192,192);
+    --color-scroll-hover:rgb(134,134,134);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background-color: darkcyan;
+}
+
+/*-----------------Menu*/
+.menu{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--color-boton);
+    color: var(--color-boton-texto);
+    right: 15px;
+    top: 15px;
+    z-index: 100;
+}
+
+
+/*----------------Barra Lateral*/
+.barra-lateral{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    height: 100%;
+    overflow: hidden;
+    padding: 20px 15px;
+    background-color: var(--color-barra-lateral);
+    transition: width 0.5s ease,background-color 0.3s ease,left 0.5s ease;
+    z-index: 50;
+}
+
+.mini-barra-lateral{
+    width: 80px;
+}
+.barra-lateral span{
+    width: 100px;
+    white-space: nowrap;
+    font-size: 18px;
+    text-align: left;
+    opacity: 1;
+    transition: opacity 0.5s ease,width 0.5s ease;
+}
+.barra-lateral span.oculto{
+    opacity: 0;
+    width: 0;
+}
+
+/*------------> Nombre de la página */
+.barra-lateral .nombre-pagina{
+    width: 100%;
+    height: 45px;
+    color: var(--color-texto);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+.barra-lateral .nombre-pagina ion-icon{
+    min-width: 50px;
+    font-size: 40px;
+    cursor: pointer;
+}
+.barra-lateral .nombre-pagina span{
+    margin-left: 5px;
+    font-size: 25px;
+}
+
+
+/*------------> Botón*/
+.barra-lateral .boton{
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-boton);
+    color: var(--color-boton-texto);
+}
+.barra-lateral .boton ion-icon{
+    min-width: 50px;
+    font-size: 25px;
+}
+
+
+/*--------------> Menu Navegación*/
+.barra-lateral .navegacion{
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.barra-lateral .navegacion::-webkit-scrollbar{
+    width: 5px;
+}
+.barra-lateral .navegacion::-webkit-scrollbar-thumb{
+    background-color: var(--color-scroll);
+    border-radius: 5px;
+}
+.barra-lateral .navegacion::-webkit-scrollbar-thumb:hover{
+    background-color: var(--color-scroll-hover);
+}
+.barra-lateral .navegacion li{  
+    list-style: none;
+    display: flex;
+    margin-bottom: 5px;
+}
+.barra-lateral .navegacion a{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    color: var(--color-texto-menu);
+}
+.barra-lateral .navegacion a:hover{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+.barra-lateral .navegacion ion-icon{
+    min-width: 50px;
+    font-size: 20px;
+}
+
+/*-----------------> Linea*/
+.barra-lateral .linea{
+    width: 100%;
+    height: 1px;
+    margin-top: 15px;
+    background-color: var(--color-linea);
+}
+
+/*----------------> Modo Oscuro*/
+.barra-lateral .modo-oscuro{
+    width: 100%;
+    margin-bottom: 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.barra-lateral .modo-oscuro .info{
+    width: 150px;
+    height: 45px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: var(--color-texto-menu);
+}
+.barra-lateral .modo-oscuro ion-icon{
+
+    width: 50px;
+    font-size: 20px;
+}
+
+/*--->switch*/
+.barra-lateral .modo-oscuro .switch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 45px;
+    cursor: pointer;
+}
+.barra-lateral .modo-oscuro .base{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 20px;
+    background-color: var(--color-switch-base);
+    border-radius: 50px;
+}
+.barra-lateral .modo-oscuro .circulo{
+    position: absolute;
+    width: 18px;
+    height: 90%;
+    background-color: var(--color-switch-circulo);
+    border-radius: 50%;
+    left: 2px;
+    transition: left 0.5s ease;
+}
+.barra-lateral .modo-oscuro .circulo.prendido{
+    left: 15px;
+}
+
+/*---------------> Usuario*/
+.barra-lateral .usuario{
+    width: 100%;
+    display: flex;
+}
+.barra-lateral .usuario img{
+    width: 50px;
+    min-width: 50px;
+    border-radius: 10px;
+}
+.barra-lateral .usuario .info-usuario{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-texto);
+    overflow: hidden;
+}
+.barra-lateral .usuario .nombre-email{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+.barra-lateral .usuario .nombre{
+    font-size: 15px;
+    font-weight: 600;
+}
+.barra-lateral .usuario .email{
+    font-size: 13px;
+}
+.barra-lateral .usuario ion-icon{
+    font-size: 20px;
+}
+
+
+.perfil_adentro {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px;
+    background-color: #fff;
+    border-radius: 10px;
+    
+}
+
+.usuarioa {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.usuarioa img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.info-usuario {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-usuario input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.datos-empleado, .direccion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.datos-empleado input, .direccion input {
+    width: calc(50% - 10px);
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h3 {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+
+
+/*-------------main*/
+
+#inbox{
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+main{
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.5s ease;
+}
+main.min-main{
+    margin-left: 80px;
+}
+
+
+/*------------------> Solicitudes*/
+
+.solicitudes_adentro {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.tabla-solicitudes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+.tabla-solicitudes th, .tabla-solicitudes td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.tabla-solicitudes th {
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+.tabla-solicitudes tr:hover {
+    background-color: #f5f5f5;
+}
+
+.accion {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-boton-texto);
+    background-color: var(--color-boton);
+    cursor: pointer;
+}
+
+.accion:not(:last-child) {
+    margin-right: 5px;
+}
+
+/*------------------> clientes */
+/* Estilo de la sección Clientes */
+.clientes_adentro {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+/* Nuevo contenedor para el scroll de la tabla */
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+/* Tabla de clientes */
+.tabla-clientes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: auto;
+}
+
+.tabla-clientes th, .tabla-clientes td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    word-wrap: break-word;
+    white-space: nowrap; /* Evita que el contenido de cada celda se salga */
+}
+
+.tabla-clientes th {
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+    border-bottom: 2px solid #ccc;
+}
+
+.tabla-clientes td {
+    background-color: #fff;
+}
+
+/* Efecto de hover para filas de la tabla */
+.tabla-clientes tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Estilo de los botones de acción */
+.accion {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: var(--color-boton);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accion:hover {
+    background-color: var(--color-boton-hover);
+}
+
+.accion:not(:last-child) {
+    margin-right: 5px;
+}
+
+/* Estilo para el formulario flotante */
+.formulario-flotante {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Asegura que quede encima de otros elementos */
+}
+
+.formulario-contenedor {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.formulario-contenedor h3 {
+    margin-bottom: 20px;
+}
+
+.formulario-contenedor label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.formulario-contenedor input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.formulario-contenedor button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color:  var(--color-boton);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.formulario-contenedor button.cancelar {
+    background-color: #f44336;
+}
+
+/*------------------> Seguimiento de Rutas */
+
+.seguimiento-rutas {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.busqueda-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.busqueda-container label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.busqueda-container input {
+    padding: 10px;
+    font-size: 16px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.busqueda-container button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: var(--color-menu-hover);
+    color: var(--color-texto);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.busqueda-container button:hover {
+    background-color:  var(--color-boton);
+    color: white;
+
+}
+
+/*------------------> Actualización de Envíos */
+
+.actualizacion-envios {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.formulario-actualizacion {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-actualizacion label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.formulario-actualizacion input,
+.formulario-actualizacion select {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.formulario-actualizacion button {
+    padding: 10px 15px;
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.formulario-actualizacion button:hover {
+    background-color:  var(--color-boton);
+    color: white;
+}
+
+.accion {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-boton-texto);
+    background-color: var(--color-boton);
+    cursor: pointer;
+}
+
+.accion:not(:last-child) {
+    margin-right: 5px;
+}
+
+
+/* Estilo para la tabla de seguimiento de rutas */
+.tabla-rutas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabla-rutas th, .tabla-rutas td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.tabla-rutas th {
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
+
+.tabla-rutas tr:hover {
+    background-color: #f5f5f5;
+}
+
+.accion {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-boton-texto);
+    background-color: var(--color-boton);
+    cursor: pointer;
+}
+
+.accion:not(:last-child) {
+    margin-right: 5px;
+}
+
+
+/*------------------> Nuevos Envíos */
+
+.nuevos-envios {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.formulario-envio {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-envio label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.formulario-envio input,
+.formulario-envio select {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.formulario-envio button {
+    padding: 10px 15px;
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.formulario-envio button:hover {
+    background-color:  var(--color-boton);
+    color: white;
+}
+
+.accion {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-boton-texto);
+    background-color: var(--color-boton);
+    cursor: pointer;
+}
+
+.accion:not(:last-child) {
+    margin-right: 5px;
+}
+
+
+
+
+/*------------------> Responsive*/
+@media (max-height: 660px){
+    .barra-lateral .nombre-pagina{
+        margin-bottom: 5px;
+    }
+    .barra-lateral .modo-oscuro{
+        margin-bottom: 3px;
+    }
+}
+@media (max-width: 600px){
+    .barra-lateral{
+        position: fixed;
+        left: -250px;
+    }
+    .max-barra-lateral{
+        left: 0;
+    }
+    .menu{
+        display: flex;
+    }
+    .menu ion-icon:nth-child(2){
+        display: none;
+    }
+    main{
+        margin-left: 0;
+    }
+    main.min-main{
+        margin-left: 0;
+    }
+    
+}
+
+/*------------------> Responsivo para tablas */
+/*------------------> Responsivo para tablas */
+@media (max-width: 768px) {
+    .tabla-solicitudes, .tabla-clientes, .tabla-rutas {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+        font-size: 14px; /* Reduce el tamaño de la fuente */
+    }
+
+    .tabla-solicitudes th, .tabla-solicitudes td, .tabla-clientes th, .tabla-clientes td, .tabla-rutas th, .tabla-rutas td {
+        padding: 8px 10px; /* Ajusta el padding */
+    }
+
+    .tabla-solicitudes th, .tabla-clientes th, .tabla-rutas th {
+        background-color: var(--color-menu-hover);
+        color: var(--color-menu-hover-texto);
+    }
+
+    .tabla-solicitudes tr, .tabla-clientes tr, .tabla-rutas tr  {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .tabla-solicitudes tr:hover, .tabla-clientes tr:hover, .tabla-rutas tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    /* Hacer que los botones de acción también sean más pequeños */
+    .accion {
+        padding: 5px 10px;
+        font-size: 14px; /* Reduce el tamaño del texto */
+    }
+    .accionbus{
+        display: none;
+    }
+    .accionbus2{
+        display: flex;
+    }
+    
+}

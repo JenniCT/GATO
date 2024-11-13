@@ -6,15 +6,13 @@ require_once("../modelo/sesionM.php");
 class RegistroController {
     public static function registrarUsuario() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $config = require __DIR__ . '/../config.php';
+            $config = require __DIR__ . '/../conexion.php';
             $conexion = new mysqli($config['servername'], $config['username'], $config['password'], $config['database']);
 
-            // Verificamos si la conexión fue exitosa
             if ($conexion->connect_error) {
                 die(json_encode(['success' => false, 'message' => 'La conexión falló: ' . $conexion->connect_error]));
             }
 
-            // Extraemos y procesamos los datos del formulario
             $nombre = isset($_POST['nombre']) ? trim($_POST['nombre']) : '';
             $aPaterno = isset($_POST['apPaterno']) ? trim($_POST['apPaterno']) : '';
             $aMaterno = isset($_POST['apMaterno']) ? trim($_POST['apMaterno']) : '';
@@ -33,21 +31,19 @@ class RegistroController {
                 $registro = new Registro($conexion);
                 $mensaje = $registro->registrarUsuario($nombre, $aPaterno, $aMaterno, $correo, $contrasena);
 
-                if ($mensaje === "Usuario agregado correctamente.") {
+                if ($mensaje === "Usuario y cliente agregados correctamente.") {
                     $_SESSION['correo'] = $correo;
-                    header("Location: ../vista/TipoUsuario.php");
+                    header("Location: ../vista/inicioCliente.php");
                     exit();
                 } else {
                     echo $mensaje; // Manejo de errores si es necesario
                 }
             }
 
-            // Cerramos la conexión después de utilizarla
             $conexion->close();
         }
     }
 }
 
-// Llamamos a la función registrarUsuario del controlador RegistroController
 RegistroController::registrarUsuario();
 ?>
